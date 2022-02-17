@@ -1,6 +1,7 @@
 
 Building RdKafka's 
 ```
+git submodule update --init --recursive
 mkdir thirdparty/bin
 cd thirdparty/src/librdkafka
 ./configure --prefix=$(pwd)/../../bin
