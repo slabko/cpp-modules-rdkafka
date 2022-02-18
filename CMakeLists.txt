@@ -9,7 +9,11 @@ set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH};thirdparty/bin)
 
 # Add FindRdKafka.cmake
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
+
 set(CPPKAFKA_CMAKE_VERBOSE TRUE)
+
+# Static library, comment out to use the dynamic library
+set(CPPKAFKA_RDKAFKA_STATIC_LIB TRUE)
 
 set(RDKAFKA_MIN_VERSION "0.9.4")
 set(RDKAFKA_MIN_VERSION_HEX 0x00090400)
@@ -20,7 +24,6 @@ project(main)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-
 find_package(RdKafka REQUIRED)
 
-target_link_libraries(main PUBLIC RdKafka::rdkafka)
+target_link_libraries(main PUBLIC RdKafka::rdkafka++ RdKafka::rdkafka)
